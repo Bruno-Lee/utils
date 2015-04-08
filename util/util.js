@@ -40,14 +40,14 @@ define(function(require, exports, module) {
             window.localStorage.removeItem(key);
         },
 
-        unique: function(base) { //数组去重
+        unique: function(base, flag) { //数组去重,base为原始数组,flag为去重标志(如果是对象则为对象中的某一个key的名称)
             var u = [],
                 obj = {};
 
             for (var i = 0; i < base.length; i++) {
-                var msgId = base[i].msgId;
-                if (!obj[msgId]) {
-                    obj[msgId] = true;
+                var prop = typeof flag != 'undefined' ? base[i][flag] : base[i];
+                if (obj[prop] != true) {
+                    obj[prop] = true;
                     u.push(base[i]);
                 }
             }
@@ -65,29 +65,30 @@ define(function(require, exports, module) {
                     second = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds();
                 
                 switch (fmt) {
-                    case "yy-mm-dd h:m:s":
+                    case 'yy-mm-dd h:m:s':
                         return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
                         break;
 
-                    case "yy-mm-dd h:m":
+                    case 'yy-mm-dd h:m':
                         return year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
                         break;
 
-                    case "yy-mm-dd":
+                    case 'yy-mm-dd':
                         return year + '-' + month + '-' + day;
                         break;
 
-                    case "mm-dd h:m":
+                    case 'mm-dd h:m':
                         return month + '-' + day + ' ' + hour + ':' + minute;
                         break;
 
-                    case "mm-dd":
+                    case 'mm-dd':
                         return month + '-' + day;
                         break;
 
-                    case "h:m":
+                    case 'h:m':
                         return hour + ':' + minute;
                         break;
+
                     default:
                         break;
                 }
@@ -95,9 +96,9 @@ define(function(require, exports, module) {
         },
 
         sizeFormat: function(value) { //文件大小格式化
-            var i = -1;
-            size = !isNaN(value) ? parseInt(value) : 0,
-            unit = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+            var i = -1,
+                size = !isNaN(value) ? parseInt(value) : 0,
+                unit = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
 
             if (size > 0) {
                 while (size >= 1) {
@@ -115,15 +116,16 @@ define(function(require, exports, module) {
 
         getRequest: function() { //获取url参数值中的键值包装成对象
             var url = window.location.search;
-            var theRequest = new Object();
+            var obj = {};
+
             if (url.indexOf("?") != -1) {
                 var str = url.substr(1);
                 strs = str.split("&");
                 for (var i = 0; i < strs.length; i++) {
-                    theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                    obj[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
                 }
             }
-            return theRequest;
+            return obj;
         },
 
         isImage: function(str) { //判断是否为图片
