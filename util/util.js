@@ -30,13 +30,11 @@ define(function(require, exports, module) {
             }
         },
 
-        clearLocal: function() {
-            //清空本地缓存
+        clearLocal: function() {  //清空本地缓存 
             window.localStorage.clear();
         },
 
-        removeLocal: function(key) {
-            //从loaclStorage中删除某一对键值对
+        removeLocal: function(key) {   //从loaclStorage中删除某一对键值对
             window.localStorage.removeItem(key);
         },
 
@@ -95,7 +93,7 @@ define(function(require, exports, module) {
             }
         },
 
-        sizeFormat: function(value) { //文件大小格式化
+        sizeFormat: function(value) { //文件大小格式化，传入比特数
             var i = -1,
                 size = !isNaN(value) ? parseInt(value) : 0,
                 unit = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
@@ -115,14 +113,14 @@ define(function(require, exports, module) {
         },
 
         getRequest: function() { //获取url参数值中的键值包装成对象
-            var url = window.location.search;
-            var obj = {};
+            var url = window.location.search,
+                obj = {};
 
             if (url.indexOf("?") != -1) {
-                var str = url.substr(1);
-                strs = str.split("&");
-                for (var i = 0; i < strs.length; i++) {
-                    obj[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                var str = url.substr(1),
+                    params = str.split("&");
+                for (var i = 0; i < params.length; i++) {
+                    obj[params[i].split("=")[0]] = decodeURIComponent(params[i].split("=")[1]);
                 }
             }
             return obj;
