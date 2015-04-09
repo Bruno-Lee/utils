@@ -3,9 +3,9 @@ define(function(require, exports, module) {
         作用：通过schema在HTML页面中启动本地app，如果未安装则跳转下载页
     */
     var config = { //配置
-        package: 'com.kdweibo.client', //app用到的包名
-        iosAppUrl: 'http://itunes.apple.com/cn/app/yun-zhi-jia-qi-ye-ban/id595672427?l=en&mt=8', //APP Store的应用下载页地址
-        androidAppUrl: 'http://gdown.baidu.com/data/wisegame/cd63c61ffd22b0ad/yunzhijia_285.apk', //android的apk下载地址 
+        package: 'com.xxx.client', //app用到的包名
+        iosAppUrl: 'http://itunes.apple.com/cn/app/xxx', //APP Store的应用下载页地址
+        androidAppUrl: 'http://xxx.com/android.apk', //android的apk下载地址 
         iosSchema: 'appSchema://start?from=h5',
         androidSchema: 'appSchema://start?from=h5'
         /*  Schema 'appSchema://start'是启动应用的Schema协议头,如果Android和IOS相同则可以合并为一个
