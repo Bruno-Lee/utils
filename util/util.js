@@ -1,4 +1,7 @@
 define(function(require, exports, module) {
+    /*
+        作用：平时会用到的一些工具类方法
+    */
     var $ = require('jquery');
     var util = {
         setLocal: function(key, value) {
@@ -17,7 +20,7 @@ define(function(require, exports, module) {
 
         getLocal: function(key) {
             //从localStorage获取数据，如果是JSON字符串则直接转化为对象返回，否则返回字符串
-            var localStorage = window.localStorage.getItem(key);
+            var str = window.localStorage.getItem(key);
 
             if (str) {
                 try {
@@ -30,7 +33,7 @@ define(function(require, exports, module) {
             }
         },
 
-        clearLocal: function() {  //清空本地缓存 
+        clearLocal: function() {  //清空本地缓存
             window.localStorage.clear();
         },
 
@@ -126,9 +129,9 @@ define(function(require, exports, module) {
             return obj;
         },
 
-        isImage: function(str) { //判断是否为图片
+        isImage: function(str) { //判断是否为HTML可以显示的图片
             var picArr = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
-
+            
             if (picArr.indexOf($.trim(str)) > -1) {
                 return true;
             }
