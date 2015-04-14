@@ -62,5 +62,22 @@ var sort = {
             arguments.callee(d, desc, j + 1, r);
         }
         return d;
+    },
+
+    insertSort: function(d, desc) {  //直接插入排序
+        for(var i = 0; i < d.length - 1; i++) {
+            if(d[i] > d[i + 1]) {
+                var key = d[i + 1],
+                    j = i;
+
+                while(d[j] > key) {
+                    d[j + 1] = d[j];
+                    j--;
+                }
+
+                d[j + 1] = key;
+            }
+        }
+        return d;
     }
 }
