@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>repeat</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+</head>
+<body>
+	<script type="text/jsx">
+		var fruits = [
+			{
+				name: 'apple',
+				price: '$1'
+			},
+			{
+				name: 'banana',
+				price: '$2'
+			},
+			{
+				name: 'orange',
+				price: '$3'
+			}
+		];
+		React.render(
+			<ul className="fruit-list">
+			{
+				fruits.map(function (item) {
+					return <li>name: {item.name}, price: {item.price}</li>
+				})
+			}
+			</ul>,
+			document.getElementsByTagName('body')[0]
+		)
+	</script>
+</body>
+</html>
