@@ -7,6 +7,8 @@
 	<script type="text/javascript" src="js/JSXTransformer.js"></script>
 </head>
 <body>
+	<div class="fruits"></div>
+	<div class="days"></div>
 	<script type="text/jsx">
 		var fruits = [
 			{
@@ -30,8 +32,27 @@
 				})
 			}
 			</ul>,
-			document.getElementsByTagName('body')[0]
-		)
+			document.getElementsByClassName('fruits')[0]
+		);
+
+		var days = [
+			'Monday',
+			'Tuesday',
+			'Wendesday',
+			'Thursday',
+			'Friday',
+			'Saturday',
+			'Sunday'
+		];
+
+		React.render(
+			<p>
+			{
+				days
+			}
+			</p>,
+			document.getElementsByClassName('days')[0]
+		);
 	</script>
 </body>
 </html>
