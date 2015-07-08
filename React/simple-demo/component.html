@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>component</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+</head>
+<body>
+	<div class="days"></div>
+	<div class="drink"></div>
+	<script type="text/jsx">
+		var LowerCase = React.createClass({  //首字母需要大写
+			render: function () {
+				return <p>{this.props.content.toLowerCase()}</p>;
+			}
+		});
+
+		React.render(
+			<LowerCase content="TODAY is Friday!" />,
+			document.getElementsByClassName('days')[0]
+		);
+
+		var DrinkList = React.createClass({
+			render: function () {
+				var children = this.props.children;
+				return(
+					<ol>
+					{
+						children.map(function (child) {
+							return <li>{child}</li>;
+						})
+					}
+					</ol>
+				)
+			}
+		});
+
+		React.render(
+			<DrinkList>
+				<span>beer</span>
+				<span>wine</span>
+				<span>coffe</span>
+			</DrinkList>,
+			document.getElementsByClassName('drink')[0]
+		)
+	</script>
+</body>
+</html>

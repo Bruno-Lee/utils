@@ -7,8 +7,8 @@
 	<script type="text/javascript" src="js/JSXTransformer.js"></script>
 </head>
 <body>
-    <div class="fruits"></div>
-    <div class="nodes"></div>
+	<div class="fruits"></div>
+	<div class="days"></div>
 	<script type="text/jsx">
 		var fruits = [
 			{
@@ -33,17 +33,26 @@
 				})
 			}
 			</ul>,
-			document.querySelector('.fruits')
+			document.getElementsByClassName('fruits')[0]
 		);
 
-		var nodes = [
-			<h1>what's this?</h1>,
-			<p>I've no idea.</p>
+		var days = [
+			'Monday',
+			'Tuesday',
+			'Wendesday',
+			'Thursday',
+			'Friday',
+			'Saturday',
+			'Sunday'
 		];
 
 		React.render(
-			<div>{nodes}</div>,
-            document.querySelector('.nodes')
+			<p>
+			{
+				days
+			}
+			</p>,
+			document.getElementsByClassName('days')[0]
 		);
 	</script>
 </body>
