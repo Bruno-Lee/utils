@@ -66,11 +66,11 @@ var sort = {
 
     insertSort: function(d, desc) {  //直接插入排序
         for(var i = 0; i < d.length - 1; i++) {
-            if(d[i] > d[i + 1]) {
+            if(d[i + 1] < d[i]) {
                 var key = d[i + 1],
                     j = i;
 
-                while(d[j] > key) {
+                while(key < d[j]) {
                     d[j + 1] = d[j];
                     j--;
                 }

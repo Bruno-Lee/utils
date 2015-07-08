@@ -7,6 +7,8 @@
 	<script type="text/javascript" src="js/JSXTransformer.js"></script>
 </head>
 <body>
+    <div class="fruits"></div>
+    <div class="nodes"></div>
 	<script type="text/jsx">
 		var fruits = [
 			{
@@ -22,16 +24,27 @@
 				price: '$3'
 			}
 		];
+
 		React.render(
 			<ul className="fruit-list">
 			{
 				fruits.map(function (item) {
-					return <li>name: {item.name}, price: {item.price}</li>
+					return <li>name: {item.name}, price: {item.price}</li>;
 				})
 			}
 			</ul>,
-			document.getElementsByTagName('body')[0]
-		)
+			document.querySelector('.fruits')
+		);
+
+		var nodes = [
+			<h1>what's this?</h1>,
+			<p>I've no idea.</p>
+		];
+
+		React.render(
+			<div>{nodes}</div>,
+            document.querySelector('.nodes')
+		);
 	</script>
 </body>
 </html>
