@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ball</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+	<style type="text/css">
+		.block {
+			position: relative;
+			width: 100px;
+			height: 100px;
+			background-color: rgb(89, 187, 157); 
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/jsx">
+		var Ball = React.createClass({
+			getInitialState: function () {
+				return {
+					top: 0,
+					left: 0
+				}
+			},
+
+			componentDidMount: function () {
+				var direction = 1,  //向下
+					width = 100,
+					move = function () {			
+						var left = this.state.left + 10,
+							top = this.state.top;
+
+						top = direction ? top + 10 : top - 10;
+
+						this.setState({
+							'top': top,
+							'left': left
+						});
+
+						if (left > document.body.clientWidth - width) {
+							clearInterval(this.timer);
+						}
+
+						if (top >= 100) {  //最底部改变方向
+							direction = 0;
+						}
+
+						if (top <= 0) { //最顶部改变方向
+							direction = 1;
+						}
+					};
+
+				this.timer = setInterval(move.bind(this), 50);
+			},
+
+			render: function () {
+				return (
+					<div className="block" style={{left: this.state.left, top: this.state.top}}></div>
+				)
+			}
+		});
+
+		React.render(
+			<Ball />,
+			document.getElementsByTagName('body')[0]
+		);
+	</script>
+</body>
+</html>
